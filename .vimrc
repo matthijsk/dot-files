@@ -1,3 +1,4 @@
+set backspace=indent,eol,start " Make backspace behave like it should
 set ruler               " Set ruler (line, column) in lower right of screen
 set showcmd             " Show partial commands in bottom of screen
 set incsearch           " Display match for search pattern when halfway typing it
