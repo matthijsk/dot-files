@@ -25,58 +25,126 @@ set wildmenu            " Menu tabcompletion
 
 set diffopt+=iwhite     " Ignore whitespace when diffing
 
-set textwidth=78        " Set default textwidth of 78
+filetype indent on
 
-filetype plugin on      " Enable filetype plugins (omnicompletion!)
+filetype plugin on         " Enable filetype plugins (omnicompletion!)
 runtime! ftplugin/man.vim  " Access man pages in a vim window (:Man <subject>)
 
-" Terminal supports more than 256 colors or gvim running?
-if &t_Co == 256 || has("gui_running")
-  set t_Co=256          " 256 color terminal support
-  colorscheme xoria256  " Default colorscheme
+if &diff
+  colorscheme xoria256
+else
+  if has("gui_running")
+    colorscheme wombat
+    " Only map CTRL-S to :write when running GUI, C-S in a terminal will pause it.
+    nnoremap <C-S> :write<CR>
+  else
+    colorscheme wombat256
+  endif
 endif
 
 " Disable toolbar and menubar, but leave the rest of the defaults.
+set guioptions+=c       " Use console dialogs
+set guioptions-=e       " No tab pages
 set guioptions-=m       " Remove menu
 set guioptions-=T       " Remove toolbar
 set guioptions-=r       " Don't display right-hand scrollbar
 set guioptions-=L       " Don't display left-hand scrollbar
+set guioptions-=b       " No bottom scrollbar
 
-set guifont=Terminus    " Set the (awesome, might I add) Terminus font
+set guifont=Terminus
 
-" Use custom eol and tab characters
-set listchars=eol:¶,tab:▸\ 
+set laststatus=2
 
-" Set SuperTab context completion
 let g:SuperTabDefaultCompletionType = "context"
 
-" Set leader key to , instead of \
 let mapleader = ","
 
-if has("gui_running")
-  " Map CTRL-S to :write
-  nnoremap <C-S> :write<CR>
-endif
+nmap <Leader>e :edit ~/.vimrc<CR>
+nmap <Leader>s :source ~/.vimrc<CR>
+
+nmap <Leader>l :ListToggle<CR>
+nmap <Leader>m :make<CR>
+
+nmap <Leader>tn :tabnew<CR>
+nmap <Leader>tc :tabclose<CR>
 
 " Map F2 to clist (overview of compiler errors/warnings)
 nmap <F2> :clist<CR>
 
-" Map F3 to copen (quickfix window with compiler output)
-nmap <F3> :copen<CR>
+" Toggle quickfix list
+nmap <F3> :Ctoggle<CR>
 
-" Map F4 to vimgrep <current word> in the specified directory. TODO: make pwd
-" dependent.
-nmap <F4> :execute "vimgrep /\\C" . expand("<cword>") . "/ Sources/**"<CR>
+nmap <F4> :call ContextSearch()<CR>
 
-" Map F6 to :A (alternate plugin, switch between header and source file)
+" Search for word in current buffer
+nmap <F5> :execute "vimgrep /\\C" . expand("<cword>") . "/j" . expand("%")<CR>
+
 nmap <F6> :A<CR>
 
-" Map <leader>g to eclim (plugin) context search (all references)
-nnoremap <leader>g :CSearch -x all<CR>
-
-" Map CTRL-B to :make
-nnoremap <C-B> :make<CR>
-
-" Map <Tab> to CTRL-W w (switch window)
 nnoremap <Tab> <C-W>w
+nnoremap K :execute "Man " . expand("<cword>")<CR>
 
+command! ListToggle :call ToggleSetList()
+
+function! ToggleSetList()
+  if &list
+    set nolist
+  else
+    set list
+  endif
+endfunction
+
+command! Ltoggle :call QuickfixToggle('l')
+command! Ctoggle :call QuickfixToggle('c')
+
+function! QuickfixToggle(type)
+  if a:type == 'c'
+    let l:closecommand = 'cclose'
+    let l:opencommand = 'botright copen'
+
+    let l:bnum = winbufnr(winnr())
+    if getbufvar(l:bnum, '&buftype') != 'quickfix'
+      let l:prevwinnr = ''
+    else
+      let l:prevwinnr = winnr('#') . "wincmd w"
+    endif
+  elseif a:type == 'l'
+    let l:closecommand = 'lclose'
+    let l:opencommand = 'lopen'
+    let l:prevwinnr = ''
+  else
+    throw "invalid argument: use \'c\' or \'l\'"
+  endif
+
+  for i in range(1, winnr('$'))
+    let l:bnum = winbufnr(i)
+    if getbufvar(l:bnum, '&buftype') == 'quickfix'
+      execute l:closecommand
+      execute l:prevwinnr
+      return
+    endif
+  endfor
+
+  execute l:opencommand
+endfunction
+
+function! ContextSearch()
+  let l:cwd = fnamemodify(getcwd(), ":t")
+  let l:word = expand("<cword>")
+
+  call CustomVimGrep(l:word, "**", 0)
+endfunction
+
+function! CustomVimGrep(word, path, append)
+  if a:append
+    let l:vimgrep = "vimgrepadd /\\C"
+  else
+    let l:vimgrep = "vimgrep /\\C"
+  endif
+
+  try
+    execute l:vimgrep . a:word . "/j " . a:path
+  catch /E480:/
+    echo a:word . " not found in " . a:path
+  endtry
+endfunction
