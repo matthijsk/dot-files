@@ -68,6 +68,13 @@ nmap <Leader>m :make<CR>
 nmap <Leader>tn :tabnew<CR>
 nmap <Leader>tc :tabclose<CR>
 
+" Yank current selection into clipboard in visual mode
+vmap <Leader>c "*y
+" Put current clipboard content
+nmap <Leader>v "*p
+" Yank entire file to clipboard
+nmap <Leader>a :%y*<CR>
+
 " Map F2 to clist (overview of compiler errors/warnings)
 nmap <F2> :clist<CR>
 
