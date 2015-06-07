@@ -57,6 +57,8 @@ set laststatus=2
 
 let g:SuperTabDefaultCompletionType = "context"
 
+" Remap , so it can be used as leader.
+nnoremap \ ,
 let mapleader = ","
 
 nmap <Leader>e :edit ~/.vimrc<CR>
@@ -67,6 +69,14 @@ nmap <Leader>m :make<CR>
 
 nmap <Leader>tn :tabnew<CR>
 nmap <Leader>tc :tabclose<CR>
+
+nmap <Leader>ww <C-W>w
+nmap <Leader>ws :split<CR>
+nmap <Leader>wv :vsplit<CR>
+nmap <Leader>wc :close<CR>
+nmap <Leader>wo :only<CR>
+
+nmap <Leader>bd :bdelete<CR>
 
 " Yank current selection into clipboard in visual mode
 vmap <Leader>c "*y
