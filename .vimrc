@@ -98,8 +98,14 @@ nmap <F5> :execute "vimgrep /\\C" . expand("<cword>") . "/j" . expand("%")<CR>
 
 nmap <F6> :A<CR>
 
-nnoremap <Tab> <C-W>w
-nnoremap K :execute "Man " . expand("<cword>")<CR>
+" Scroll up and down using space and backspace in normal mode.
+nnoremap <Space> <C-D>
+nnoremap <BS>    <C-U>
+
+" Switch windows with tab.
+nnoremap <Tab>  <C-W>w
+
+nnoremap K      :execute "Man " . expand("<cword>")<CR>
 
 command! ListToggle :call ToggleSetList()
 
