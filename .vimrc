@@ -64,7 +64,10 @@ let mapleader = ","
 nmap <Leader>e :edit ~/.vimrc<CR>
 nmap <Leader>s :source ~/.vimrc<CR>
 
-nmap <Leader>l :ListToggle<CR>
+nmap <Leader>l  :set list!<CR>
+nmap <Leader>rl :set relativenumber!<CR>
+nmap <Leader>hl :set cursorline!<CR>
+
 nmap <Leader>m :make<CR>
 
 nmap <Leader>tn :tabnew<CR>
@@ -106,16 +109,6 @@ nnoremap <BS>    <C-U>
 nnoremap <Tab>  <C-W>w
 
 nnoremap K      :execute "Man " . expand("<cword>")<CR>
-
-command! ListToggle :call ToggleSetList()
-
-function! ToggleSetList()
-  if &list
-    set nolist
-  else
-    set list
-  endif
-endfunction
 
 command! Ltoggle :call QuickfixToggle('l')
 command! Ctoggle :call QuickfixToggle('c')
