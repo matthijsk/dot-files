@@ -8,9 +8,9 @@ set incsearch           " Display match for search pattern when halfway typing i
 set scrolloff=5         " Keep 5 lines of context when scrolling
 
 set expandtab           " No real tabs
-set shiftwidth=2        " Indentation 2 spaces
-set softtabstop=2
-set tabstop=4           " Real tabs should be 4
+set shiftwidth=4        " Indentation 4 spaces
+set softtabstop=4
+set tabstop=8           " Real tabs should be 8
 
 set ignorecase          " Case insensitive by default
 set smartcase           " But enable case sensitivity when a capital letter is typed anyway
@@ -30,17 +30,7 @@ filetype indent on
 filetype plugin on         " Enable filetype plugins (omnicompletion!)
 runtime! ftplugin/man.vim  " Access man pages in a vim window (:Man <subject>)
 
-if &diff
-  colorscheme xoria256
-else
-  if has("gui_running")
-    colorscheme wombat
-    " Only map CTRL-S to :write when running GUI, C-S in a terminal will pause it.
-    nnoremap <C-S> :write<CR>
-  else
-    colorscheme wombat256
-  endif
-endif
+colorscheme evening
 
 " Disable toolbar and menubar, but leave the rest of the defaults.
 set guioptions+=c       " Use console dialogs
@@ -51,11 +41,17 @@ set guioptions-=r       " Don't display right-hand scrollbar
 set guioptions-=L       " Don't display left-hand scrollbar
 set guioptions-=b       " No bottom scrollbar
 
-set guifont=Terminus
+set guifont=Terminus\ 12
 
 set laststatus=2
 
-let g:SuperTabDefaultCompletionType = "context"
+if has ("gui_running")
+    " Maximize window
+    set lines=999
+    set columns=999
+    " Make all windows equally high and wide
+    execute "normal <C-W>="
+endif
 
 " Remap , so it can be used as leader.
 nnoremap \ ,
