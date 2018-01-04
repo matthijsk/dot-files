@@ -1,7 +1,7 @@
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
-export GREP_OPTIONS="--color=auto"
+alias grep='grep --color=auto'
 
 alias g='git'
 alias vd='vimdiff'
