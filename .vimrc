@@ -84,6 +84,11 @@ nmap <Leader>v "*p
 " Yank entire file to clipboard
 nmap <Leader>a :%y*<CR>
 
+" Edit next file
+nmap <Leader>n :next<CR>
+" Edit previous file
+nmap <Leader>p :previous<CR>
+
 " Map F2 to clist (overview of compiler errors/warnings)
 nmap <F2> :clist<CR>
 
