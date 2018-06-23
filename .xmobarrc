@@ -1,3 +1,4 @@
+-- -*-mode: Haskell;-*-
 -- vim: syntax=haskell
 
 Config { font = "xft:Terminus:size=10"
