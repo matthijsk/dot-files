@@ -12,9 +12,12 @@ main = do
       terminal = "urxvt",
       normalBorderColor = "#000000",
       focusedBorderColor = "#FFFFFF",
-      modMask = mod4Mask, -- rebind mod to the windows key
-      manageHook = manageDocks <+> manageHook defaultConfig, --always display xmobar at top of screen
-      layoutHook = avoidStruts $ layoutHook defaultConfig,
+
+      modMask         = mod4Mask, -- rebind mod to the windows key
+
+      manageHook      = manageDocks <+> manageHook defaultConfig, --always display xmobar at top of screen
+      layoutHook      = avoidStruts $ layoutHook defaultConfig,
+      handleEventHook = handleEventHook defaultConfig <+> docksEventHook,
       logHook = dynamicLogWithPP xmobarPP
                 {
                   ppOutput = hPutStrLn xmproc,

@@ -1,11 +1,11 @@
 -- -*-mode: Haskell;-*-
 -- vim: syntax=haskell
 
-Config { font = "xft:Terminus:size=10"
+Config { font = "xft:DejaVu Sans Mono:pixelsize=12"
        , bgColor = "black"
        , fgColor = "grey"
        , position = Top
-       , lowerOnStart = True
+       , lowerOnStart = False
        , border = NoBorder
        , borderColor = "black"
        , commands = [ Run Network "eth0" ["-L","0","-H","32","--normal","green","--high","red"] 10
