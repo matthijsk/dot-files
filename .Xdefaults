@@ -2,14 +2,13 @@ URxvt.background:  Black
 URxvt.foreground:  White
 URXvt.depth:       32
 URxvt.buffered:    True
-URxvt.transparent: True
+URxvt.transparent: False
 URxvt.shading:     10
-URxvt.font:        xft:Terminus:pixelsize=14
-URxvt.boldFont:    xft:Terminus:pixelsize=14
+URxvt.font:        xft:DejaVu Sans Mono:pixelsize=14
+URxvt.boldFont:    xft:DejaVu Sans Mono:bold:pixelsize=14
 URxvt.scrollBar:   False
 URxvt.saveLines:   8192
-URxvt.cursorBlink: True
-URxvt.iconFile:    /usr/share/icons/gnome/16x16/apps/gnome-terminal.png
+URxvt.cursorBlink: False
 
 ! black
 URxvt*color0  : #2E3436
