@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if [ $# -gt 1 ]; then
+  emacsclient --eval "(ediff-files \"$1\" \"$2\")"
+else
+  echo "Usage:" `basename $0` "FILE1 FILE2"
+  echo "Runs Emacs ediff-files with the specified arguments"
+fi
