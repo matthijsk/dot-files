@@ -24,7 +24,3 @@ main = do
                   ppTitle = xmobarColor "green" "" . shorten 50
                 }
     }
-    `additionalKeys`
-    [
-      ((mod1Mask, xK_p), spawn "dmenu_run")
-    ]
