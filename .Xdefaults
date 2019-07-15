@@ -4,8 +4,8 @@ URXvt.depth:       32
 URxvt.buffered:    True
 URxvt.transparent: False
 URxvt.shading:     10
-URxvt.font:        xft:DejaVu Sans Mono:pixelsize=14
-URxvt.boldFont:    xft:DejaVu Sans Mono:bold:pixelsize=14
+URxvt.font:        xft:DejaVu Sans Mono:pixelsize=12
+URxvt.boldFont:    xft:DejaVu Sans Mono:bold:pixelsize=12
 URxvt.scrollBar:   False
 URxvt.saveLines:   8192
 URxvt.cursorBlink: False
