@@ -1,4 +1,3 @@
--- -*-mode: Haskell;-*-
 -- vim: syntax=haskell
 
 Config { font = "xft:DejaVu Sans Mono:pixelsize=12"
@@ -18,3 +17,7 @@ Config { font = "xft:DejaVu Sans Mono:pixelsize=12"
        , alignSep = "}{"
        , template = " %multicpu% | %memory% | %eth0% } %StdinReader% { <fc=#ee9a00>%date%</fc>"
        }
+
+-- Local Variables:
+-- mode: haskell
+-- End:
