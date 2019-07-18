@@ -1,6 +1,7 @@
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
+alias ll='ls -lh'
 alias grep='grep --color=auto'
 
 alias g='git'
