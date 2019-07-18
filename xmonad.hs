@@ -7,7 +7,7 @@ import System.IO
 
 main = do
   xmproc <- spawnPipe "xmobar" -- launch xmonad and pipe output to xmobar
-  xmonad $ defaultConfig
+  xmonad $ def
     {
       terminal = "urxvt",
       normalBorderColor = "#000000",
@@ -15,9 +15,9 @@ main = do
 
       modMask         = mod4Mask, -- rebind mod to the windows key
 
-      manageHook      = manageDocks <+> manageHook defaultConfig, --always display xmobar at top of screen
-      layoutHook      = avoidStruts $ layoutHook defaultConfig,
-      handleEventHook = handleEventHook defaultConfig <+> docksEventHook,
+      manageHook      = manageDocks <+> manageHook def, --always display xmobar at top of screen
+      layoutHook      = avoidStruts $ layoutHook def,
+      handleEventHook = handleEventHook def <+> docksEventHook,
       logHook = dynamicLogWithPP xmobarPP
                 {
                   ppOutput = hPutStrLn xmproc,
