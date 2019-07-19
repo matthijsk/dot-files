@@ -9,7 +9,6 @@ main = do
   xmproc <- spawnPipe "xmobar" -- launch xmonad and pipe output to xmobar
   xmonad $ def
     {
-      terminal = "urxvt",
       normalBorderColor = "#000000",
       focusedBorderColor = "#FFFFFF",
 
