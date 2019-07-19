@@ -1,5 +1,2 @@
-# Start mpd as normal user
-mpd ~/.mpd/mpd.conf
-
-# Start xmonad
-xmonad
+[[ -f ~/.Xresources ]] && xrdb ~/.Xresources
+exec xmonad
