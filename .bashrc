@@ -1,5 +1,6 @@
 export VISUAL=vim
 export EDITOR="$VISUAL"
+export PATH=$PATH:$(go env GOPATH)/bin
 
 alias ll='ls -lh'
 alias grep='grep --color=auto'
