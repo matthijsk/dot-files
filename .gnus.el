@@ -12,4 +12,6 @@
             (cond ((string-match-p "gwene.nl.nos.nosnieuws" gnus-newsgroup-name)
                    (setq-local gnus-summary-line-format "%*%U%R %-20&user-date;| %S\n")
                    ;; Fill NOS Nieuws articles, as these are basically unfilled html.
+                   (setq-local gnus-treat-fill-article t))
+                  ((string-match-p "gwene.com.emacslife.planet" gnus-newsgroup-name)
                    (setq-local gnus-treat-fill-article t)))))
