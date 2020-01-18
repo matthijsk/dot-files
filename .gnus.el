@@ -1,4 +1,4 @@
-(setq gnus-select-method '(nntp "news.gmane.org"))
+(setq gnus-select-method '(nntp "news.gmane.io"))
 
 
 ;; Summary buffer
