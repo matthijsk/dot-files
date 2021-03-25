@@ -8,6 +8,7 @@
     br = branch
     ls = ls-files
     g = grep -i
+    cp = cherry-pick
 [diff]
     tool = gvimdiff
 [svn]
