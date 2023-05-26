@@ -3,11 +3,9 @@
 [alias]
     st = status
     stl = stash list
-    ci = commit
     co = checkout
     br = branch
     ls = ls-files
-    g = grep -i
     cp = cherry-pick
 [diff]
     tool = gvimdiff
