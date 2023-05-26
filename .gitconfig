@@ -7,6 +7,7 @@
     br = branch
     ls = ls-files
     cp = cherry-pick
+    rh = reset --hard
 [diff]
     tool = gvimdiff
 [svn]
