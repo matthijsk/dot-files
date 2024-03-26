@@ -12,3 +12,8 @@
     tool = gvimdiff
 [svn]
     pushmergeinfo = true
+[user]
+	name = Matthijs Kool
+	email = matthijzk@gmail.com
+[init]
+	defaultBranch = main
