@@ -1,3 +1,4 @@
+# For interactive shells (.zshrc). See man 1 zsh.
 bindkey -e
 
 alias ecn='emacsclient -n'
